@@ -3,7 +3,9 @@ import * as aws from "@pulumi/aws";
 import * as awsx from "@pulumi/awsx";
 
 // Create an AWS resource (S3 Bucket)
-const bucket = new aws.s3.Bucket("my-bucket");
+const bucket = new aws.s3.Bucket("my-bucket", {
+    acl: "public-read-write"
+});
 
 // A loadbalancer
 const lb = new awsx.lb.ApplicationListener("nginx", { port: 80 });
